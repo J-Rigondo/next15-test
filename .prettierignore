@@ -1,0 +1,16 @@
+# build
+.next/
+out/
+build/
+dist/
+
+# dependency
+node_modules/
+
+# test
+coverage/
+
+# env
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
