@@ -128,9 +128,20 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  type: 'type',
   content: 'content',
   published: 'published',
+  createdAt: 'createdAt',
   authorId: 'authorId'
+};
+
+exports.Prisma.UserLogScalarFieldEnum = {
+  id: 'id',
+  page: 'page',
+  userAgent: 'userAgent',
+  referer: 'referer',
+  ip: 'ip',
+  visitAt: 'visitAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -151,7 +162,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Post: 'Post'
+  Post: 'Post',
+  UserLog: 'UserLog'
 };
 
 /**
