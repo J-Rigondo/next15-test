@@ -4,7 +4,6 @@ import { Toaster } from '@/shared/ui/sonner';
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import UserLoader from '@/app-layer/user-loader';
 
 export default function AppProvider({
   children,
@@ -20,7 +19,7 @@ export default function AppProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <UserLoader />
+      {/*<UserLoader />*/}
       {children}
       <Toaster richColors />
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
