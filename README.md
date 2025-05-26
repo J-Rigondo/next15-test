@@ -14,6 +14,20 @@ pnpm dev
 bun dev
 ```
 
+## Practice Subject
+- FSD 적용
+- prisma 무료 db 서비스 적용
+- 비로그인 유저 로그 수집 (middleware)
+- middleware -> server action 호출 문제
+- server action과 client component
+- react hook form, zod 적용
+- tanstack query
+  - dehydration
+  - prefetch
+  - streaming
+  - with suspense
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
