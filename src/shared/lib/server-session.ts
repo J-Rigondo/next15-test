@@ -14,6 +14,10 @@ export async function getUserSessionId() {
   return session?.value;
 }
 
+/**
+ * 서버 액션으로만 가능하며 api route에서 호출하면 쿠키 설정 불가
+ * api route는 NextResponse에서 설정 필수
+ */
 export async function setUserSessionId() {
   const newSessionId = randomUUID();
   const cookieStore = await cookies();
