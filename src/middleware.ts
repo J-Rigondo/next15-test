@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, userAgent } from 'next/server';
 import { getSessionFromRequest } from '@/shared/lib/session';
 import {
   SESSION_COOKIE_MAX_AGE,
@@ -6,30 +6,39 @@ import {
 } from '@/shared/lib/constant';
 
 export async function middleware(request: NextRequest) {
-  // todo Server Action 요청이면 무시
-  if (request.method === 'POST' && request.nextUrl.pathname === '/_actions') {
-    return NextResponse.next();
-  }
-
+  const { pathname } = request.nextUrl;
+  const method = request.method;
   const ip = request.headers.get('x-forwarded-for') ?? 'unknown';
-  const userAgent = request.headers.get('user-agent') ?? 'unknown';
+  // const ua = request.headers.get('user-agent') ?? 'unknown';
   const referer = request.headers.get('referer') ?? 'direct';
   const visitAt = new Date().toISOString();
+  const { device, browser, isBot, os, ua } = userAgent(request);
+
+  // device.type can be: 'mobile', 'tablet', 'console', 'smarttv',
+  // 'wearable', 'embedded', or undefined (for desktop browsers)
+  const viewport = device.type || 'desktop';
 
   console.log('========================================');
-  console.log(Object.fromEntries(request.headers.entries()));
+  // console.log(Object.fromEntries(request.headers.entries()));
 
-  console.log(ip);
-  console.log(userAgent);
-  console.log(referer);
-  console.log(visitAt);
+  console.log(`pathname=${pathname}`);
+  console.log(`method=${method}`);
+  console.log(`ip=${ip}`);
+  console.log(`ua=${ua}`);
+  console.log(`referer=${referer}`);
+  console.log(`visitAt=${visitAt}`);
+  console.log(`viewport=${viewport}`);
+  console.log(`browser=${browser.name} ${browser.major} ${browser.version}`);
+  console.log(`isBot=${isBot}`);
+  console.log(`os=${os.name}`);
+
   console.log('========================================');
 
   const response = NextResponse.next();
 
   const session = getSessionFromRequest(request);
   if (!session) {
-    // call api
+    // call api route
     const apiResult = await fetch(`${request.nextUrl.origin}/api/users`, {
       method: 'POST',
     });
