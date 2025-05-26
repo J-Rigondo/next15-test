@@ -19,7 +19,6 @@ export default function AppProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/*<UserLoader />*/}
       {children}
       <Toaster richColors />
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
