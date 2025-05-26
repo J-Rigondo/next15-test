@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSessionFromRequest } from '@/shared/lib/session';
+import {
+  SESSION_COOKIE_MAX_AGE,
+  SESSION_COOKIE_NAME,
+} from '@/shared/lib/constant';
 
-export function middleware(request: NextRequest, response: NextResponse) {
+export async function middleware(request: NextRequest) {
   // todo Server Action 요청이면 무시
   if (request.method === 'POST' && request.nextUrl.pathname === '/_actions') {
     return NextResponse.next();
@@ -13,7 +17,7 @@ export function middleware(request: NextRequest, response: NextResponse) {
   const visitAt = new Date().toISOString();
 
   console.log('========================================');
-  console.log(request.headers.entries());
+  console.log(Object.fromEntries(request.headers.entries()));
 
   console.log(ip);
   console.log(userAgent);
@@ -21,15 +25,25 @@ export function middleware(request: NextRequest, response: NextResponse) {
   console.log(visitAt);
   console.log('========================================');
 
+  const response = NextResponse.next();
+
   const session = getSessionFromRequest(request);
   if (!session) {
     // call api
-    fetch(`${request.nextUrl.origin}/api/users`, {
+    const apiResult = await fetch(`${request.nextUrl.origin}/api/users`, {
       method: 'POST',
+    });
+    const { sessionId } = await apiResult.json();
+    response.cookies.set(SESSION_COOKIE_NAME, sessionId, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: SESSION_COOKIE_MAX_AGE,
     });
   }
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
