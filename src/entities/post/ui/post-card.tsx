@@ -17,7 +17,7 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <div className="flex pb-10 first:pt-10">
-      <div className="flex-shrink-0 rounded-md w-[250px] h-[130px] relative overflow-hidden">
+      <div className="flex-shrink-0 rounded-lg w-[255px] h-[150px] relative overflow-hidden">
         <Image className="object-cover" src={imgUrl} alt="Post Image" fill />
       </div>
       <div className="space-y-2.5 pl-6">
