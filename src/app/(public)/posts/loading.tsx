@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className=" divide-y divide-slate-300 space-y-10">
+    <div className="p-20 divide-y divide-slate-300 space-y-10">
       {Array.from({ length: 10 }).map((_, i) => (
         <div
           key={i}
