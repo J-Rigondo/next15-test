@@ -1,6 +1,6 @@
-import Logo from '@/widgets/layout-header/ui/logo';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
+import Logo from './logo';
 
 export function LayoutHeader() {
   return (
