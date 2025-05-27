@@ -4,7 +4,7 @@ import { CreatePostDto } from '@/entities/post/api/types';
 import { toast } from 'sonner';
 
 export function usePostWriteMutation() {
-  return useMutation<void, Error, CreatePostDto>({
+  return useMutation({
     mutationFn: createPost,
     onSuccess() {
       toast.success('Post write successfully.');
