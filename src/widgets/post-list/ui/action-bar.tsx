@@ -1,8 +1,8 @@
 'use client';
 
-import PostWrite from '@/features/post/write/ui/post-write';
 import { Button } from '@/shared/ui/button';
-import usePostListActionStore from '@/widgets/post-list/model/store';
+import { PostWrite } from '@/features/post/write';
+import usePostListActionStore from '../model/store';
 
 export default function ActionBar() {
   const { isPublished, setIsPublished } = usePostListActionStore();

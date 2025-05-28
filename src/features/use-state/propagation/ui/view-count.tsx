@@ -8,7 +8,7 @@ type ViewCountProps = {
   initialViews: number;
 };
 
-export default function ViewCount({ initialViews }: ViewCountProps) {
+export function ViewCount({ initialViews }: ViewCountProps) {
   const [views, setViews] = useState(initialViews);
 
   return (

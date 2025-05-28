@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import { createPost } from '@/entities/post/api/post-action';
 import { toast } from 'sonner';
+import { createPost } from '@/entities/post';
 
 export function usePostWriteMutation() {
   return useMutation({

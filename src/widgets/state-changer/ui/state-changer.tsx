@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardTitle } from '@/shared/ui/card';
-import ViewCount from '@/features/use-state/propagation/ui/view-count';
+import {ViewCount} from '@/features/use-state/propagation';
 
 export function StateChanger() {
   const [base, setBase] = useState(100);

@@ -16,16 +16,13 @@ import { Textarea } from '@/shared/ui/textarea';
 import { Switch } from '@/shared/ui/switch';
 import { Label } from '@/shared/ui/label';
 import { Controller, useForm } from 'react-hook-form';
-import {
-  PostWriteSchema,
-  postWriteSchema,
-} from '@/features/post/write/model/post-write-schema';
+import { PostWriteSchema, postWriteSchema } from '../model/post-write-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputError from '@/shared/ui/input-error';
 import { Loader } from 'lucide-react';
-import { usePostWriteMutation } from '@/features/post/write/model/actions';
+import { usePostWriteMutation } from '../model/actions';
 
-export default function PostWrite() {
+export function PostWrite() {
   const {
     register,
     handleSubmit,

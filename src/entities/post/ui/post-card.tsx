@@ -8,7 +8,7 @@ type PostCardProps = {
   createdAt: string;
 };
 
-export default function PostCard({
+export function PostCard({
   imgUrl,
   postType,
   title,

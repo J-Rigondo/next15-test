@@ -1,4 +1,4 @@
-import { StateChanger } from '@/widgets/state-changer/ui/state-changer';
+import { StateChanger } from '@/widgets/state-changer';
 
 export default function UseStatePage() {
   return (

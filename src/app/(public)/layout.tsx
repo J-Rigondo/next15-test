@@ -1,5 +1,5 @@
-import { LayoutHeader } from '@/widgets/layout-header/ui/layout-header';
 import { LayoutFooter } from '@/widgets/layout-footer';
+import { LayoutHeader } from '@/widgets/layout-header';
 
 export default function PublicLayout({
   children,

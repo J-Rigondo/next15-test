@@ -1,12 +1,14 @@
 'use server';
 
 import prisma from '@/shared/lib/prisma';
-import { CreatePostDto } from '@/entities/post/api/types';
+import { CreatePostDto } from './types';
 import { getUserSessionId } from '@/shared/lib/server-session';
 
 export async function getPosts() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   return prisma.post.findMany({
+    relationLoadStrategy: 'join',
+    take: 10,
     orderBy: { createdAt: 'desc' },
     include: { author: { select: { username: true } } },
   });
