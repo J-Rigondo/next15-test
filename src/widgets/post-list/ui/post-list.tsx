@@ -4,7 +4,15 @@ import ActionBar from './action-bar';
 import { getPosts, PostCard } from '@/entities/post';
 
 export async function PostList() {
-  const posts = await getPosts();
+  const posts: ({ author: { username: string } } & {
+    title: string;
+    createdAt: Date;
+    id: number;
+    type: string;
+    content: string | null;
+    published: boolean;
+    authorId: number;
+  })[] = []; //await getPosts();
 
   return (
     <>
