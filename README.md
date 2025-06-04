@@ -26,6 +26,7 @@ bun dev
   - prefetch
   - streaming
   - with suspense
+- i18n, next-intl 국제화 적용
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
