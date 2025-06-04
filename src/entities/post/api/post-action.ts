@@ -10,9 +10,14 @@ export async function getPosts() {
     // relationLoadStrategy: 'join',
     take: 10,
     orderBy: { createdAt: 'desc' },
+
     include: { author: { select: { username: true } } },
   });
 }
+
+export async function getInfinitePosts() {}
+
+export async function getPagingPosts() {}
 
 export async function createPost(request: CreatePostDto) {
   const { type, title, content, isPublished } = request;
